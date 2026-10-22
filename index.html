@@ -28,10 +28,10 @@ main{max-width:960px;margin:auto;padding:34px 16px 60px;position:relative;z-inde
 .postmark:before{content:"";position:absolute;inset:5px;border:1px dashed #795c43;border-radius:50%}
 .postmark span{font-size:1.5rem}
 .postmark small{position:absolute;bottom:-13px;font-size:8px;letter-spacing:.1em;background:#d9c49f;padding:0 3px}
-.address{position:absolute;left:11%;top:30%;font-size:clamp(1rem,3vw,1.25rem);line-height:1.75;font-style:italic;text-shadow:0 .3px #47372b}
+.address{position:absolute;left:11%;top:30%;width:62%;font-size:clamp(1rem,3vw,1.25rem);line-height:1.6;font-style:italic;text-shadow:0 .3px #47372b}
 .address .to{font-size:.72rem;text-transform:uppercase;letter-spacing:.15em;font-style:normal;color:#7b6348}
 .address strong{font-weight:normal;font-size:1.45em}
-.from{position:absolute;left:8%;bottom:12%;font-size:.88rem;line-height:1.6;font-style:italic;color:#79634a}
+.from{position:absolute;left:8%;bottom:9%;font-size:.88rem;line-height:1.45;font-style:italic;color:#79634a;max-width:36%}
 .postal-lines{position:absolute;right:7%;bottom:12%;width:100px;height:42px;opacity:.4;background:repeating-linear-gradient(to bottom,transparent 0 6px,#775b41 7px,#775b41 8px,transparent 9px 13px);transform:rotate(-4deg)}
 .corner-flourish{position:absolute;right:23px;bottom:22px;font-size:21px;color:#795c43;opacity:.65}
 .back{display:none;background:#d2bb91}
@@ -46,9 +46,6 @@ main{max-width:960px;margin:auto;padding:34px 16px 60px;position:relative;z-inde
 .seal svg{width:62px;height:62px;filter:drop-shadow(0 1px 1px #3a1715)}
 .backhint{position:absolute;bottom:20px;left:0;right:0;text-align:center;z-index:7;color:#6b5138;font-style:italic;font-size:.9rem}
 .instructions{text-align:center;margin:-1px 0 20px;color:#d9bd93;font-style:italic;line-height:1.6}
-.sound-toggle{display:flex;align-items:center;justify-content:center;gap:8px;margin:0 auto 25px;border:1px solid #9e8762;border-radius:30px;background:#20231999;color:#e2cca3;padding:10px 16px;font:inherit;font-size:.88rem;cursor:pointer}
-.sound-toggle:active{transform:scale(.98)}
-.sound-note{text-align:center;font-size:.75rem;color:#c1ac86;opacity:.72;margin-top:-16px;margin-bottom:28px}
 .folded-letter{display:none;width:min(86vw,500px);height:230px;margin:0 auto 25px;position:relative;cursor:pointer;filter:drop-shadow(0 20px 18px #05060499);perspective:900px}
 .folded-letter.show{display:block;animation:arrive .9s both}
 .folded-sheet{position:absolute;inset:0;background:linear-gradient(130deg,#f0e3c7,#d5bd94 55%,#e9d9b8);border:1px solid #aa8c61;box-shadow:inset 0 0 35px #76502b33;overflow:hidden}
@@ -57,9 +54,6 @@ main{max-width:960px;margin:auto;padding:34px 16px 60px;position:relative;z-inde
 .fold-line{position:absolute;inset:0;z-index:2;background:linear-gradient(145deg,#f1e4c8,#c9ae7e);clip-path:polygon(0 0,100% 0,50% 50%);transform-origin:top;transition:transform .85s cubic-bezier(.2,.75,.2,1);filter:drop-shadow(0 4px 3px #5e452a55)}
 .folded-letter.opening .fold-line{transform:rotateX(180deg)}
 .folded-letter.opening{animation:unfolded 1.2s both}
-.folded-mark{position:absolute;z-index:3;left:50%;top:58%;transform:translate(-50%,-50%);color:#765a3a;text-align:center;font-style:italic;font-size:1.05rem;line-height:1.8;width:85%}
-.folded-mark strong{display:block;font-weight:normal;font-size:1.5rem}
-.folded-mark small{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase}
 .unfold-button{display:none;margin:0 auto 30px;border:1px solid #b69b6e;border-radius:30px;padding:12px 20px;background:#292b20;color:#ead8b6;font:inherit;cursor:pointer}
 .unfold-button.show{display:block}
 .letter{display:none;max-width:740px;margin:0 auto;color:var(--ink);position:relative;background:linear-gradient(135deg,#f2e8d4,#e2d0af 60%,#efe1c8);border:1px solid #ad9269;padding:clamp(26px,6vw,58px);box-shadow:0 24px 50px #08050499,inset 0 0 35px #9a7b4b35;overflow:hidden}
@@ -82,7 +76,7 @@ main{max-width:960px;margin:auto;padding:34px 16px 60px;position:relative;z-inde
 @keyframes arrive{from{opacity:0;transform:translateY(30px) rotateX(-10deg) scale(.92)}to{opacity:1;transform:translateY(0) rotateX(0) scale(1)}}
 @keyframes unfolded{0%{transform:scaleY(.7) rotateX(-12deg);transform-origin:top}65%{transform:scaleY(1.03)}100%{transform:scaleY(1)}}
 @keyframes unfold{0%{opacity:0;transform:translateY(-18px) scaleY(.88);transform-origin:top}100%{opacity:1;transform:translateY(0) scaleY(1)}}
-@media(max-width:500px){main{padding:24px 12px 45px}.stage{min-height:440px}.envelope{width:90vw;height:58vw;min-height:220px;max-height:310px}.postmark{width:59px;height:59px;right:14px;top:13px}.postmark span{font-size:1.2rem}.address{top:34%;left:8%}.from{bottom:10%;left:7%;font-size:.78rem}.seal{width:82px;height:82px}.seal svg{width:52px;height:52px}.folded-letter{height:210px}.letter{padding:29px 23px}}
+@media(max-width:500px){main{padding:24px 12px 45px}.stage{min-height:390px}.envelope{width:90vw;height:58vw;min-height:220px;max-height:310px}.postmark{width:59px;height:59px;right:14px;top:13px}.postmark span{font-size:1.2rem}.address{top:27%;left:8%;width:59%;font-size:clamp(.95rem,4.2vw,1.12rem);line-height:1.45}.address strong{font-size:1.35em}.from{bottom:7%;left:7%;font-size:.75rem;line-height:1.35;max-width:34%}.postal-lines{width:26%;right:6%;bottom:12%;height:34px}.corner-flourish{right:7%;bottom:8%;font-size:17px}.seal{width:82px;height:82px}.seal svg{width:52px;height:52px}.folded-letter{height:210px}.letter{padding:29px 23px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -111,11 +105,8 @@ main{max-width:960px;margin:auto;padding:34px 16px 60px;position:relative;z-inde
 </div>
 </section>
 <p class="instructions" id="instructions">Toca el sobre para descubrir el sello</p>
-<button class="sound-toggle" id="soundToggle" type="button"><span id="soundIcon">♫</span><span id="soundLabel">Escuchar el bosque</span></button>
-<p class="sound-note">Sonido ambiental suave · puedes apagarlo cuando quieras</p>
 <section class="folded-letter" id="foldedLetter" aria-label="Carta doblada">
   <div class="folded-sheet"></div><div class="fold-line" id="paperFold"></div>
-  <div class="folded-mark"><small>Una nota guardada en el tiempo</small><strong>Para Diego</strong>✧</div>
 </section>
 <button class="unfold-button" id="unfoldButton" type="button">Desdoblar la carta ✧</button>
 <article class="letter" id="letter">
@@ -158,7 +149,6 @@ main{max-width:960px;margin:auto;padding:34px 16px 60px;position:relative;z-inde
      if(audioCtx.state==='suspended')audioCtx.resume();
      master.gain.setTargetAtTime(.18,audioCtx.currentTime,.8);audioOn=true;
      scheduleChirp();
-     soundLabel.textContent='Silenciar el bosque';soundIcon.textContent='♫';
      return true;
    }catch(e){return false;}
  }
@@ -187,11 +177,7 @@ main{max-width:960px;margin:auto;padding:34px 16px 60px;position:relative;z-inde
  }
  folded.addEventListener('click',unfold);unfoldButton.addEventListener('click',unfold);
  document.getElementById('restart').addEventListener('click',function(){opened=false;flipped=false;unfolded=false;stage.classList.remove('hidden');stage.style.opacity='1';stage.style.transform='';envelope.classList.remove('flipped');flap.style.transform='';seal.style.opacity='1';seal.style.transform='translate(-50%,-50%) rotate(-5deg)';folded.classList.remove('show','opening','hidden');unfoldButton.classList.remove('show');unfoldButton.style.display='';letter.classList.remove('show');end.hidden=true;instructions.classList.remove('hidden');instructions.textContent='Toca el sobre para descubrir el sello';backhint.textContent='Toca el sello para abrir';window.scrollTo({top:0,behavior:'smooth'});});
- const soundToggle=document.getElementById('soundToggle'),soundLabel=document.getElementById('soundLabel'),soundIcon=document.getElementById('soundIcon');
- soundToggle.addEventListener('click',async function(){
-   if(!audioOn){const ok=startForest();if(!ok)soundLabel.textContent='Este navegador no permite activar el sonido';}
-   else{audioOn=false;if(chirpTimer)clearTimeout(chirpTimer);if(master&&audioCtx)master.gain.setTargetAtTime(.0001,audioCtx.currentTime,.25);soundLabel.textContent='Escuchar el bosque';soundIcon.textContent='♫';}
- });
+
 })();
 </script>
 </body>
