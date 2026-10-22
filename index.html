@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#171b13">
+<title>Una carta para Diego</title>
+<style>
+:root{--paper:#e9d9b8;--paper-light:#f3e8d0;--ink:#403126;--sepia:#876747;--wine:#672b25;--moss:#697052;--gold:#c6a878}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:#ead9b8;background:radial-gradient(ellipse at 48% 18%,#51422d 0,#2b2c20 38%,#171b13 76%,#0d100c 100%);font-family:Georgia,"Times New Roman",serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.23;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E")}
+body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse at center,transparent 38%,#070a0677 100%)}
+main{max-width:960px;margin:auto;padding:34px 16px 60px;position:relative;z-index:1}
+.eyebrow{text-align:center;font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;color:#c7b18a;opacity:.82;margin:4px 0 24px}
+.stage{min-height:clamp(430px,67vh,600px);display:grid;place-items:center;position:relative}
+.stage:before,.stage:after{content:"✦";position:absolute;color:#c8b17b66;font-size:20px;pointer-events:none}
+.stage:before{left:9%;top:17%;transform:rotate(-15deg)}
+.stage:after{right:10%;bottom:16%;font-size:14px}
+.envelope{width:min(88vw,570px);height:min(61vw,355px);min-height:235px;max-height:355px;position:relative;filter:drop-shadow(0 27px 20px #060704aa);transition:filter .6s}
+.face{position:absolute;inset:0;overflow:hidden;border:1px solid #92734d;background:linear-gradient(135deg,#e5d2ac,#c9b18a 48%,#e4d0a9);box-shadow:inset 0 0 40px #6e4a2c40,inset 0 0 5px #fff4}
+.face:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 4% 5%,#62432155,transparent 25%),radial-gradient(ellipse at 96% 91%,#6847264a,transparent 24%),radial-gradient(ellipse at 50% 50%,transparent 35%,#65452135 100%),repeating-linear-gradient(2deg,transparent 0 5px,#80674a12 6px,transparent 7px 13px)}
+.face:after{content:"";position:absolute;inset:9px;border:1px solid #92775470;pointer-events:none}
+.front{padding:clamp(19px,5vw,34px);color:#4b3829}
+.envelope.flipped .front{display:none}
+.postmark{position:absolute;right:25px;top:22px;width:78px;height:78px;border:1px solid #795c43;border-radius:50%;opacity:.82;display:grid;place-items:center;transform:rotate(12deg);color:#75523b}
+.postmark:before{content:"";position:absolute;inset:5px;border:1px dashed #795c43;border-radius:50%}
+.postmark span{font-size:1.5rem}
+.postmark small{position:absolute;bottom:-13px;font-size:8px;letter-spacing:.1em;background:#d9c49f;padding:0 3px}
+.address{position:absolute;left:11%;top:30%;width:62%;font-size:clamp(1rem,3vw,1.25rem);line-height:1.6;font-style:italic;text-shadow:0 .3px #47372b}
+.address .to{font-size:.72rem;text-transform:uppercase;letter-spacing:.15em;font-style:normal;color:#7b6348}
+.address strong{font-weight:normal;font-size:1.45em}
+.from{position:absolute;left:8%;bottom:9%;font-size:.88rem;line-height:1.45;font-style:italic;color:#79634a;max-width:36%}
+.postal-lines{position:absolute;right:7%;bottom:12%;width:100px;height:42px;opacity:.4;background:repeating-linear-gradient(to bottom,transparent 0 6px,#775b41 7px,#775b41 8px,transparent 9px 13px);transform:rotate(-4deg)}
+.corner-flourish{position:absolute;right:23px;bottom:22px;font-size:21px;color:#795c43;opacity:.65}
+.back{display:none;background:#d2bb91}
+.envelope.flipped .back{display:block}
+.backpaper{position:absolute;inset:12px;background:radial-gradient(ellipse at 50% 50%,#e5d3ad,#c7ae82);border:1px solid #a48a64;box-shadow:inset 0 0 30px #72502b55}
+.backpaper:before{content:"";position:absolute;inset:0;opacity:.7;background:repeating-linear-gradient(0deg,transparent 0 7px,#8b704a13 8px,transparent 9px 15px)}
+.fold{position:absolute;inset:0;clip-path:polygon(0 0,50% 48%,100% 0);background:linear-gradient(155deg,#f0e3ca,#c8ae83);filter:drop-shadow(0 4px 4px #6b4b2d55);z-index:2}
+.flap{position:absolute;inset:0;clip-path:polygon(0 0,100% 0,50% 54%);background:linear-gradient(145deg,#f0e1c2,#bda078);transform-origin:top;z-index:3;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.seal{position:absolute;z-index:6;left:50%;top:52%;transform:translate(-50%,-50%) rotate(-5deg);width:100px;height:100px;border:0;border-radius:48% 52% 50% 47%;cursor:pointer;color:#d9b59a;background:radial-gradient(circle at 32% 24%,#b26555 0,#843a30 38%,#5b211e 75%,#35110e 100%);box-shadow:inset 0 0 0 3px #9a5142,inset 0 0 0 6px #5c2520,inset 0 -9px 12px #341210,0 8px 15px #3e291c99;display:grid;place-items:center;transition:transform .25s,opacity .3s}
+.seal:before{content:"";position:absolute;inset:-2px;border:2px solid #5e241f;border-radius:46% 54% 49% 51%;filter:drop-shadow(0 2px 1px #32100e)}
+.seal:after{content:"";position:absolute;inset:9px;border:1px solid #c17c67a8;border-radius:50%}
+.seal svg{width:62px;height:62px;filter:drop-shadow(0 1px 1px #3a1715)}
+.backhint{position:absolute;bottom:20px;left:0;right:0;text-align:center;z-index:7;color:#6b5138;font-style:italic;font-size:.9rem}
+.instructions{text-align:center;margin:-1px 0 20px;color:#d9bd93;font-style:italic;line-height:1.6}
+.folded-letter{display:none;width:min(86vw,500px);height:230px;margin:0 auto 25px;position:relative;cursor:pointer;filter:drop-shadow(0 20px 18px #05060499);perspective:900px}
+.folded-letter.show{display:block;animation:arrive .9s both}
+.folded-sheet{position:absolute;inset:0;background:linear-gradient(130deg,#f0e3c7,#d5bd94 55%,#e9d9b8);border:1px solid #aa8c61;box-shadow:inset 0 0 35px #76502b33;overflow:hidden}
+.folded-sheet:before{content:"";position:absolute;inset:9px;border:1px solid #b5a07c99}
+.folded-sheet:after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 45%,#84623a19 50%,transparent 55%),radial-gradient(ellipse at 0 0,#76552d44,transparent 30%)}
+.fold-line{position:absolute;inset:0;z-index:2;background:linear-gradient(145deg,#f1e4c8,#c9ae7e);clip-path:polygon(0 0,100% 0,50% 50%);transform-origin:top;transition:transform .85s cubic-bezier(.2,.75,.2,1);filter:drop-shadow(0 4px 3px #5e452a55)}
+.folded-letter.opening .fold-line{transform:rotateX(180deg)}
+.folded-letter.opening{animation:unfolded 1.2s both}
+.unfold-button{display:none;margin:0 auto 30px;border:1px solid #b69b6e;border-radius:30px;padding:12px 20px;background:#292b20;color:#ead8b6;font:inherit;cursor:pointer}
+.unfold-button.show{display:block}
+.letter{display:none;max-width:740px;margin:0 auto;color:var(--ink);position:relative;background:linear-gradient(135deg,#f2e8d4,#e2d0af 60%,#efe1c8);border:1px solid #ad9269;padding:clamp(26px,6vw,58px);box-shadow:0 24px 50px #08050499,inset 0 0 35px #9a7b4b35;overflow:hidden}
+.letter.show{display:block;animation:unfold 1.2s cubic-bezier(.2,.75,.2,1) both}
+.letter:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 0 0,#79552b3e,transparent 24%),radial-gradient(ellipse at 100% 100%,#79552b36,transparent 24%),repeating-linear-gradient(2deg,transparent 0 5px,#927a5810 6px,transparent 7px 14px)}
+.letter:after{content:"";position:absolute;inset:11px;border:1px solid #b6a07d88;pointer-events:none}
+.letter>*{position:relative;z-index:1}
+.date{text-align:right;color:#80694e;margin-bottom:28px;font-style:italic}
+.salutation{font-size:1.5rem;margin-bottom:22px;font-style:italic}
+.content{font-size:clamp(1.02rem,2.7vw,1.18rem);line-height:1.9}
+.content p{margin:0 0 1.1em}
+.signature{font-size:1.45rem;font-style:italic;line-height:1.7;margin-top:27px}
+.ps{border-top:1px solid #b7a17e;padding-top:18px;margin-top:25px;line-height:1.8}
+.end{text-align:center;color:#e1c398;line-height:1.8;padding:28px 10px}
+.end button{border:1px solid #a4855d;border-radius:99px;background:transparent;color:#e5cda5;padding:10px 16px;font:inherit;cursor:pointer}
+.hidden{display:none!important}
+.firefly{position:fixed;z-index:0;width:4px;height:4px;border-radius:50%;background:#e9ce83;box-shadow:0 0 10px 3px #d6bb6c77;opacity:.5;pointer-events:none;animation:glow 4s ease-in-out infinite alternate}
+.firefly.one{left:12%;top:37%}.firefly.two{right:14%;top:48%;animation-delay:1.2s}.firefly.three{left:21%;bottom:17%;animation-delay:2s}.firefly.four{right:22%;bottom:24%;animation-delay:.5s}
+@keyframes glow{from{opacity:.1;transform:translateY(0) scale(.7)}to{opacity:.8;transform:translateY(-12px) scale(1.2)}}
+@keyframes arrive{from{opacity:0;transform:translateY(30px) rotateX(-10deg) scale(.92)}to{opacity:1;transform:translateY(0) rotateX(0) scale(1)}}
+@keyframes unfolded{0%{transform:scaleY(.7) rotateX(-12deg);transform-origin:top}65%{transform:scaleY(1.03)}100%{transform:scaleY(1)}}
+@keyframes unfold{0%{opacity:0;transform:translateY(-18px) scaleY(.88);transform-origin:top}100%{opacity:1;transform:translateY(0) scaleY(1)}}
+@media(max-width:500px){main{padding:24px 12px 45px}.stage{min-height:390px}.envelope{width:90vw;height:58vw;min-height:220px;max-height:310px}.postmark{width:59px;height:59px;right:14px;top:13px}.postmark span{font-size:1.2rem}.address{top:27%;left:8%;width:59%;font-size:clamp(.95rem,4.2vw,1.12rem);line-height:1.45}.address strong{font-size:1.35em}.from{bottom:7%;left:7%;font-size:.75rem;line-height:1.35;max-width:34%}.postal-lines{width:26%;right:6%;bottom:12%;height:34px}.corner-flourish{right:7%;bottom:8%;font-size:17px}.seal{width:82px;height:82px}.seal svg{width:52px;height:52px}.folded-letter{height:210px}.letter{padding:29px 23px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="firefly one"></div><div class="firefly two"></div><div class="firefly three"></div><div class="firefly four"></div>
+<main>
+<div class="eyebrow">✧ Para encontrarnos en este tiempo ✧</div>
+<section class="stage" id="stage" aria-label="Sobre antiguo interactivo">
+<div class="envelope" id="envelope">
+  <div class="face front">
+    <div class="postmark"><span>✉</span><small>POSTE · 1926</small></div>
+    <div class="address"><div class="to">Para</div><strong>Diego</strong><br>En algún lugar<br>de este tiempo</div>
+    <div class="from">Remitente:<br>Luna ✧</div><div class="postal-lines"></div><div class="corner-flourish">✧ ❧</div>
+  </div>
+  <div class="face back" id="back">
+    <div class="backpaper"></div><div class="fold"></div><div class="flap" id="flap"></div>
+    <button class="seal" id="seal" type="button" aria-label="Abrir la carta">
+      <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+       <circle cx="32" cy="35" r="23" stroke="currentColor" stroke-width="2.3"/><circle cx="32" cy="35" r="18" stroke="currentColor" stroke-width="1.2"/>
+       <path d="M32 21V35L42 41M25 7h14M32 7v5M47 14l4-5M17 14l-4-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+       <circle cx="32" cy="35" r="2.5" fill="currentColor"/><path d="M32 13v3M32 54v3M10 35h3M51 35h3" stroke="currentColor" stroke-width="1.8"/>
+      </svg>
+    </button>
+    <div class="backhint" id="backhint">Toca el sello para abrir</div>
+  </div>
+</div>
+</section>
+<p class="instructions" id="instructions">Toca el sobre para descubrir el sello</p>
+<section class="folded-letter" id="foldedLetter" aria-label="Carta doblada">
+  <div class="folded-sheet"></div><div class="fold-line" id="paperFold"></div>
+</section>
+<button class="unfold-button" id="unfoldButton" type="button">Desdoblar la carta ✧</button>
+<article class="letter" id="letter">
+<div class="date">21 de octubre de 2026</div><div class="salutation">Querido Diego:</div>
+<div class="content">
+<p>Me acabo de poner a revisar mi correo, que tenía muchísimo tiempo sin revisar bien, y me encontré con un correo tuyo. 🥺</p>
+<p>No sé por qué no lo había visto antes, y qué curioso que justamente hoy, después de estar hablando sobre viajes en el tiempo, me haya encontrado con tus palabras. No sé, hay coincidencias que me hacen detenerme un momento y pensar que quizá hay cosas que tienen su propio tiempo para encontrarnos. 🥹</p>
+<p>Me puse a llorar, pero no son lágrimas malas. Al contrario, sentí cómo se me iluminaba el corazoncito. ❤️‍🩹 No sé cómo agradecerte ni cómo explicarte todo el cariño, amor y admiración que siento por ti. Eres, en verdad, un curita para mi corazoncito.</p>
+<p>Tus palabras, tu apoyo y tu presencia me hacen más fuerte. Me dan valentía para hacer cosas que normalmente no haría y me hacen querer estar aquí, en este tiempo, viviendo todo lo que me toca vivir.</p>
+<p>Cada vez que pasan más cosas, me sigo sorprendiendo de la conexión tan fuerte que tengo contigo. Y eso que pasó con mi cabello… Sé que tú serías una de las personas que más me entendería, pero, al mismo tiempo, me hizo sentir algo muy extraño: como si fuéramos una sola pieza partida en dos. Como si fuéramos dos versiones de una misma persona que, por alguna razón, no tendrían que haberse encontrado en la misma dimensión, pero que lograron romperla para juntarse. 🫢</p>
+<p>No sé si tenga sentido, ni siquiera sé si exista una manera de explicarlo. Quizá sea una de esas cosas que nunca vamos a poder comprender del todo. Pero me alegra muchísimo que, sea lo que sea que haya pasado, hayamos logrado hacerlo y salirnos con la nuestra. Que entre tantas posibilidades, tantos tiempos y tantas versiones de nosotros mismos, nos haya tocado coincidir en esta.</p>
+<p>Y qué bonito que así haya sido.</p>
+<p>En fin, qué bonito recibir algo así, precisamente en mi mes favorito. 🍂 Hay cosas que sé que nunca volverán, y a veces me da mucho miedo pensar en ello. Incluso me da miedo conocerme más, mirar hacia atrás y darme cuenta de todo lo que he vivido y de las cosas que he hecho. Pero también me emociona muchísimo todo lo que viene, la persona en la que me estoy convirtiendo y saber que, con el tiempo, podremos compartir cada vez más cosas.</p>
+<p>Gracias por mirarme con tanto cariño, incluso cuando yo misma todavía estoy intentando entenderme y a veces se me olvida mirarme así. Gracias por reconocer esa chispa en mí, por recordarme que sigue ahí y por hacerme sentir que no tengo que apagarla para ser querida o comprendida.</p>
+<p>Me siento muy afortunada de que formes parte de mi vida. Y si algo me emociona de todo lo que viene, es pensar en las historias que todavía nos faltan, las conversaciones que aún no hemos tenido, las cosas que todavía nos quedan por descubrir y todos esos momentos que algún día se convertirán en recuerdos que guardaremos con muchísimo cariño.</p>
+<p>Te extraño también. Espero que la vida nos permita tener aún más espacios en este tiempo y en todos los que hagan falta.</p>
+</div>
+<div class="signature">Te ama mucho,<br>Luna. ❤️‍🩹</div>
+<div class="ps"><strong>P. D.</strong> Gracias por ser ese cerillito que enciende mi llama. Y me gusta pensar que, de alguna manera, nosotros hacemos eso el uno por el otro. Que cuando a alguno se le olvida cómo brillar, el otro está ahí para recordárselo.</div>
+</article>
+<div class="end" id="end" hidden>Hay cosas que tienen su propio tiempo para encontrarnos.<br><button id="restart">Volver a mirar el sobre</button></div>
+</main>
+<script>
+(function(){
+ const envelope=document.getElementById('envelope'),seal=document.getElementById('seal'),flap=document.getElementById('flap'),letter=document.getElementById('letter'),stage=document.getElementById('stage'),instructions=document.getElementById('instructions'),backhint=document.getElementById('backhint'),end=document.getElementById('end'),folded=document.getElementById('foldedLetter'),unfoldButton=document.getElementById('unfoldButton'),paperFold=document.getElementById('paperFold');
+ let flipped=false,opened=false,unfolded=false,audioCtx=null,master=null,oscillators=[],noiseSource=null,audioOn=false;
+ function startForest(){
+   const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return false;
+   try{
+     audioCtx=audioCtx||new AC();
+     if(!master){
+       master=audioCtx.createGain();master.gain.value=.0001;master.connect(audioCtx.destination);
+       const buffer=audioCtx.createBuffer(1,audioCtx.sampleRate*3,audioCtx.sampleRate),data=buffer.getChannelData(0);
+       for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*.24;
+       noiseSource=audioCtx.createBufferSource();noiseSource.buffer=buffer;noiseSource.loop=true;
+       const low=audioCtx.createBiquadFilter();low.type='lowpass';low.frequency.value=520;
+       const windGain=audioCtx.createGain();windGain.gain.value=.13;noiseSource.connect(low);low.connect(windGain);windGain.connect(master);noiseSource.start();
+       [110,164.81,220].forEach((freq,i)=>{const o=audioCtx.createOscillator(),g=audioCtx.createGain(),filter=audioCtx.createBiquadFilter();o.type='sine';o.frequency.value=freq;filter.type='lowpass';filter.frequency.value=450;g.gain.value=[.045,.025,.016][i];o.connect(filter);filter.connect(g);g.connect(master);o.start();oscillators.push(o);});
+     }
+     if(audioCtx.state==='suspended')audioCtx.resume();
+     master.gain.setTargetAtTime(.18,audioCtx.currentTime,.8);audioOn=true;
+     scheduleChirp();
+     return true;
+   }catch(e){return false;}
+ }
+ let chirpTimer=null;
+ function scheduleChirp(){
+   if(!audioOn||!audioCtx)return;
+   const t=audioCtx.currentTime+.15,o=audioCtx.createOscillator(),g=audioCtx.createGain();
+   o.type='sine';const base=1250+Math.random()*800;
+   o.frequency.setValueAtTime(base,t);o.frequency.exponentialRampToValueAtTime(base*1.35,t+.11);o.frequency.exponentialRampToValueAtTime(base*.9,t+.24);
+   g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.012,t+.035);g.gain.exponentialRampToValueAtTime(.0001,t+.28);
+   o.connect(g);g.connect(master);o.start(t);o.stop(t+.3);
+   chirpTimer=window.setTimeout(scheduleChirp,3500+Math.random()*6000);
+ }
+ function flip(){if(flipped||opened)return;startForest();flipped=true;envelope.classList.add('flipped');instructions.textContent='El tiempo guarda algo para ti…';}
+ envelope.addEventListener('click',function(e){if(e.target.closest('#seal')){startForest();return;}flip();});
+ function showFolded(){stage.classList.add('hidden');instructions.classList.add('hidden');folded.classList.add('show');unfoldButton.classList.add('show');folded.scrollIntoView({behavior:'smooth',block:'center'});}
+ seal.addEventListener('click',function(e){
+   e.preventDefault();e.stopPropagation();if(opened)return;
+   if(!flipped){flip();backhint.textContent='Toca el reloj otra vez para abrir';return;}
+   opened=true;flap.style.transform='rotateX(180deg)';seal.style.transform='translate(-50%,-50%) scale(1.35) rotate(18deg)';seal.style.opacity='0';backhint.textContent='La carta se está abriendo…';
+   window.setTimeout(showFolded,950);
+ });
+ function unfold(){
+   if(unfolded)return;unfolded=true;folded.classList.add('opening');unfoldButton.classList.remove('show');unfoldButton.style.display='none';
+   window.setTimeout(function(){folded.classList.add('hidden');letter.classList.add('show');end.hidden=false;letter.scrollIntoView({behavior:'smooth',block:'start'});},850);
+ }
+ folded.addEventListener('click',unfold);unfoldButton.addEventListener('click',unfold);
+ document.getElementById('restart').addEventListener('click',function(){opened=false;flipped=false;unfolded=false;stage.classList.remove('hidden');stage.style.opacity='1';stage.style.transform='';envelope.classList.remove('flipped');flap.style.transform='';seal.style.opacity='1';seal.style.transform='translate(-50%,-50%) rotate(-5deg)';folded.classList.remove('show','opening','hidden');unfoldButton.classList.remove('show');unfoldButton.style.display='';letter.classList.remove('show');end.hidden=true;instructions.classList.remove('hidden');instructions.textContent='Toca el sobre para descubrir el sello';backhint.textContent='Toca el sello para abrir';window.scrollTo({top:0,behavior:'smooth'});});
+
+})();
+</script>
+</body>
+</html>
