@@ -1,1 +1,0 @@
-# una-carta-a-traves-del-tiempo
